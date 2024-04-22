@@ -61,7 +61,7 @@ with col2:
     blood_glucose_level = st.number_input(label='Blood Glucose Level (80-200)', min_value=80, max_value=200, step=1)
 
 st.write('')
-st.write('')
+st.write('Made by Deepender(23112)')
 col1, col2 = st.columns([0.438, 0.562])
 with col2:
     submit = st.button(label='Predict')
