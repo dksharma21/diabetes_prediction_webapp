@@ -5,8 +5,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import metrics
 import streamlit as st
-
-# Set up warnings
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
@@ -32,51 +30,41 @@ accuracy = metrics.accuracy_score(y_test, y_pred)
 
 # Streamlit app layout
 st.set_page_config(page_title='Diabetes Prediction', page_icon=':dna:')
+st.markdown('<h1 style="text-align: center;">Diabetes Prediction</h1>', unsafe_allow_html=True)
 
-# Custom styles for background, text color, and button
-st.markdown("""
-    <style>
-    .reportview-container {
-        background-color: black;
-        color: white;
-    }
-    .css-1d391kg {
-        padding-top: 0px;
-        padding-bottom: 0px;
-    }
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-    
-    </style>
-    """, unsafe_allow_html=True)
-
-st.markdown('<h1 style="text-align: center; color: black;">Diabetes Prediction</h1>', unsafe_allow_html=True)
-
-# Add responsive image under the main heading
-image_url = "images.png"  # Replace with your actual image URL
-st.image(image_url)
+# Add image under the main heading
+image_url = "images.png"  # Replace with your image URL
+st.image(image_url, width=700)  # Set the width as needed
 
 col1, col2 = st.columns(2, gap='large')
 
 with col1:
-    gender = st.selectbox('Gender', options=['Male', 'Female', 'Other'])
-    gender_dict = {'Female': 0.0, 'Male': 1.0, 'Other': 2.0}
-    age = st.number_input('Age ', min_value=1, max_value=120, step=1)
-    hypertension = st.selectbox('Hypertension', options=['No', 'Yes'])
-    hypertension_dict = {'No': 0, 'Yes': 1}
-    heart_disease = st.selectbox('Heart Disease', options=['No', 'Yes'])
-    heart_disease_dict = {'No': 0, 'Yes': 1}
+    gender = st.selectbox(label='Gender', options=['Male', 'Female', 'Other'])
+    gender_dict = {'Female':0.0, 'Male':1.0, 'Other':2.0}
+
+    age = st.number_input(label='Age ', min_value=1, max_value=120, step=1)
+
+    hypertension = st.selectbox(label='Hypertension', options=['No', 'Yes'])
+    hypertension_dict = {'No':0, 'Yes':1}
+
+    heart_disease = st.selectbox(label='Heart Disease', options=['No', 'Yes'])
+    heart_disease_dict = {'No':0, 'Yes':1}
 
 with col2:
-    smoking_history = st.selectbox('Smoking History', options=['Never', 'Current', 'Former', 'Ever', 'Not Current', 'No Info'])
-    smoking_history_dict = {'Never': 4.0, 'No Info': 0.0, 'Current': 1.0, 'Former': 3.0, 'Ever': 2.0, 'Not Current': 5.0}
-    bmi = st.number_input('BMI (0-100)', min_value=0.0, max_value=100.0, step=0.1)
-    hba1c_level = st.number_input('HbA1c - Hemoglobin Level (0-9)', min_value=0.0, max_value=9.0, step=0.1)
-    blood_glucose_level = st.number_input('Blood Glucose Level (80-200)', min_value=80, max_value=200, step=1)
+    smoking_history = st.selectbox(label='Smoking History', options=['Never', 'Current', 'Former', 'Ever', 'Not Current', 'No Info'])
+    smoking_history_dict = {'Never':4.0, 'No Info':0.0, 'Current':1.0, 'Former':3.0, 'Ever':2.0, 'Not Current':5.0}
 
-submit = st.button('Submit')
+    bmi = st.number_input(label='BMI (0-100)', min_value=0.0, max_value=100.0, step=0.1)
+
+    hba1c_level = st.number_input(label='HbA1c - Hemoglobin Level (0-9)', min_value=0.0, max_value=9.0, step=0.1)
+
+    blood_glucose_level = st.number_input(label='Blood Glucose Level (80-200)', min_value=80, max_value=200, step=1)
+
+st.write('')
+st.write('')
+col1, col2 = st.columns([0.438, 0.562])
+with col2:
+    submit = st.button(label='Predict')
 
 if submit:
     try:
@@ -89,8 +77,5 @@ if submit:
             st.balloons()
         else:
             st.error('Diabetes Result: Positive (Please Consult with Doctor)')
-    except Exception as e:
-        st.warning('Please fill all required information. Error: ' + str(e))
-        
-# Display the model's accuracy
-st.subheader(f"Model Accuracy (Random Forest): {accuracy * 100:.2f}%")
+    except:
+        st.warning('Please fill all required information')
