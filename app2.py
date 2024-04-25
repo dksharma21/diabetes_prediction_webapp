@@ -38,7 +38,7 @@ st.markdown("""
     <style>
     .reportview-container {
         background-color: black;
-        color: white;
+        color: black;
     }
     .css-1d391kg {
         padding-top: 0px;
