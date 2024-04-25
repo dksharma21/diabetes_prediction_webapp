@@ -52,7 +52,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.markdown('<h1 style="text-align: center; color: white;">Diabetes Prediction</h1>', unsafe_allow_html=True)
+st.markdown('<h1 style="text-align: center; color: black;">Diabetes Prediction</h1>', unsafe_allow_html=True)
 
 # Add responsive image under the main heading
 image_url = "images.png"  # Replace with your actual image URL
