@@ -31,7 +31,7 @@ y_pred = model.predict(x_test)
 accuracy = metrics.accuracy_score(y_test, y_pred)
 
 # Streamlit app layout
-st.set_page_config(page_title='Diabetes Prediction', page_icon=':dna:')
+st.header(page_title='Diabetes Prediction', page_icon=':dna:')
 
 # Custom styles for background, text color, and button
 st.markdown("""
