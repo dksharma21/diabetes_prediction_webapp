@@ -36,13 +36,6 @@ st.set_page_config(page_title='Diabetes Prediction', page_icon=':dna:')
 # Custom styles for background, text color, and button
 st.markdown("""
     <style>
-    .reportview-container {
-        background-color: black;
-        color: black;
-    }
-    .css-1d391kg {
-        padding-top: 0px;
-        padding-bottom: 0px;
     }
     img {
         max-width: 100%;
