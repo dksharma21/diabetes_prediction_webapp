@@ -83,7 +83,7 @@ if submit:
             st.success('Diabetes Result: Negative')
             st.balloons()
         else:
-            st.error('Diabetes Result: Positive (Please Consult with Doctor)')
+            st.error('Diabetes Result: Positive (Please Consult with Doctor.)')
 
         # Display the model's accuracy after predicting
         st.subheader(f"Model Accuracy (Random Forest): {accuracy * 100:.2f}%")
