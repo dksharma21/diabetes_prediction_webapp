@@ -9,7 +9,7 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
 # Load dataset
-df = pd.read_csv("https://raw.githubusercontent.com/gopiashokan/dataset/main/diabetes_prediction_dataset.csv")
+df = pd.read_csv("d.csv")
 
 # Preprocessing
 enc = OrdinalEncoder()
